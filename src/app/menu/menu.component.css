@@ -1,0 +1,50 @@
+.main-sidebar {
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    font-size: 1.1em;
+}
+
+.user-panel .info, .user-panel a {
+    color: #777;
+}
+
+.sidebar-menu > li > a {
+    font-size: 1em;
+    font-weight: 600;
+    color: #28abaa;
+    background: transparent;
+}
+
+.sidebar-menu .active {
+    color: #28abaa;
+}
+
+.sidebar-menu > li > a > i {
+    margin-right: 5px;
+}
+
+.sidebar-menu > li > .treeview-menu {
+    margin: 0;
+    padding: 10px 0;
+    background: #fafafa;
+}
+
+.sidebar-menu .treeview-menu > li > a {
+    color: #999;
+    transition: all .25s ease-out;
+}
+
+.sidebar-menu .treeview-menu > li > a:hover {
+    color: #28abaa;
+    transition: all .25s ease-out;
+}
+
+/* ícones */
+
+.icon-calendar {
+    height: 16px;
+    width: 16px;
+    color: #777;
+    margin-right: 10px; 
+    background-image: url('../../assets/calendar-alt.svg');
+}
