@@ -4,11 +4,25 @@
           <div class="box-header">
               <i class="fa fa-clock-o"></i>
               <h3 class="box-title">Agendamento de Consultas</h3>
-            </div>        
+            </div>
        </div>
       </div>
     </div> -->
 
+
+   <div *ngIf="prestadores !== undefined">
+      {{prestadores | json}}
+     <div class="row">
+        <div class="col-sm-4" *ngFor="let prestador of prestadores.prestadores">
+          {{prestador }}
+            <div class="card">
+                <div class="card-block">
+                    <h4 class="card-title">{{ prestador.nome }}</h4>
+                </div>
+            </div>
+      </div>
+    </div>
+  </div>
     <div class="row">
       <div class="col-md-4">
         <!-- Widget: user widget style 1 -->
