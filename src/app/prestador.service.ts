@@ -11,15 +11,25 @@ import 'rxjs/add/operator/do';
 
 import { Observable } from 'rxjs';
 
+
 @Injectable()
 export class PrestadorService {
   constructor(private http: Http) {}
+
   public pesquisaPrestadores(): Observable<any[]> {
+    console.log(`${URL_API}/Prestadores/Consultar`)
     return this.http
-      .get(`${URL_API}/Prestadores/Consultar`)
+    .get(`${URL_API}/Prestadores/Consultar`)
       .retry(10)
-      .map(resposta => <any>resposta.json())
-      .do(data => console.log('All: ' + (data)))
+      .map(resposta => resposta.json())
+      .do(data => this.convertObjectPrestadores(data))
       .catch(err => Observable.throw(err.message));
+
+    }
+
+  private convertObjectPrestadores(objeto: any): any {
+    const myObjStr = JSON.stringify(objeto);
+    const myJson: any = JSON.parse(myObjStr) ;
+    console.log(myJson);
   }
 }
