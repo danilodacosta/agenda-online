@@ -15,10 +15,10 @@ import { Observable } from 'rxjs';
 export class PrestadorService {
   constructor(private http: Http) {}
 
-  public pesquisaPrestadores(): Observable<any[]> {
+  public pesquisaPrestadores(): Observable<any> {
     return this.http
     .get(`${URL_API}/Prestadores/Consultar`)
       .retry(10)
-      .map(resposta => JSON.parse(resposta.json()));
+      .map(resposta => JSON.parse(resposta.json()).classe.prestadores);
     }
 }
