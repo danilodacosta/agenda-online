@@ -19,6 +19,6 @@ export class PrestadorService {
     return this.http
     .get(`${URL_API}/Prestadores/Consultar`)
       .retry(10)
-      .map(resposta => JSON.parse(resposta.json()).classe.prestadores);
+      .map(resposta => JSON.parse(resposta.json()).classe.prestadores)._do(data => console.log(data));
     }
 }

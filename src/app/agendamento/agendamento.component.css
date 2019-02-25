@@ -46,3 +46,16 @@
     font-size: 1.1em;
     margin-left: 10px;
 } */
+
+.foto-medico {
+    background-position: center;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: relative;
+    top: -15px;
+    border: 2px solid #FFF;
+    overflow: hidden;
+    margin: auto;
+}

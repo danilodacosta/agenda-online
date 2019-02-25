@@ -17,7 +17,9 @@ export class AgendamentoComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.prestadorService.pesquisaPrestadores()
     .subscribe((prestadores: any[]) =>  this.prestadores = prestadores);
+    // console.log(this.prestadores);
   }
+
   ngOnDestroy() {
   }
 
