@@ -11,23 +11,14 @@ import 'rxjs/add/operator/do';
 
 import { Observable } from 'rxjs';
 
-
 @Injectable()
 export class PrestadorService {
   constructor(private http: Http) {}
 
   public pesquisaPrestadores(): Observable<any[]> {
     return this.http
-    .get(`${URL_API}`)
+    .get(`${URL_API}/Prestadores/Consultar`)
       .retry(10)
-      .map(resposta => resposta.json())
-      .do(data => this.convertObjectPrestadores(data));
+      .map(resposta => JSON.parse(resposta.json()));
     }
-
-  private convertObjectPrestadores(objeto: any): any {
-    console.log(objeto);
-    const myObjStr = JSON.stringify(objeto);
-    const myJson: any = JSON.parse(myObjStr) ;
-    console.log(myJson.classe.prestadores);
-  }
 }
