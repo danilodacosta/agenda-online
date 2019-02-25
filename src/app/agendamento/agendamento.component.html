@@ -13,8 +13,7 @@
    <div *ngIf="prestadores !== undefined">
       {{prestadores | json}}
      <div class="row">
-        <div class="col-sm-4" *ngFor="let prestador of prestadores.prestadores">
-          {{prestador }}
+        <div class="col-sm-4" *ngFor="let prestador of prestadores">
             <div class="card">
                 <div class="card-block">
                     <h4 class="card-title">{{ prestador.nome }}</h4>

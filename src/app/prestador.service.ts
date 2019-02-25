@@ -17,19 +17,17 @@ export class PrestadorService {
   constructor(private http: Http) {}
 
   public pesquisaPrestadores(): Observable<any[]> {
-    console.log(`${URL_API}/Prestadores/Consultar`)
     return this.http
-    .get(`${URL_API}/Prestadores/Consultar`)
+    .get(`${URL_API}`)
       .retry(10)
       .map(resposta => resposta.json())
-      .do(data => this.convertObjectPrestadores(data))
-      .catch(err => Observable.throw(err.message));
-
+      .do(data => this.convertObjectPrestadores(data));
     }
 
   private convertObjectPrestadores(objeto: any): any {
+    console.log(objeto);
     const myObjStr = JSON.stringify(objeto);
     const myJson: any = JSON.parse(myObjStr) ;
-    console.log(myJson);
+    console.log(myJson.classe.prestadores);
   }
 }
