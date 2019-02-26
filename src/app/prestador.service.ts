@@ -19,6 +19,12 @@ export class PrestadorService {
     return this.http
     .get(`${URL_API}/Prestadores/Consultar`)
       .retry(10)
-      .map(resposta => JSON.parse(resposta.json()).classe.prestadores)._do(data => console.log(data));
+      .map(resposta => JSON.parse(resposta.json()).classe.prestadores)._do(data => console.log(data))
+      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+    }
+
+    private errorHandler(error: any): void {
+      console.log('error ao consultar prestadores : ' + error);
+      alert('error ao consultar prestadores : ' + error);
     }
 }

@@ -8,6 +8,8 @@ export class Prestador {
   public codigoConselho: string;
   public cpf: string;
   public dataInclusao: string;
+  public ddd: string;
+  public ddi: string;
   public email: string;
   public facebook: string;
   public id: number;

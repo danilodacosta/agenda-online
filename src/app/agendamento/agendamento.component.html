@@ -9,23 +9,30 @@
       </div>
     </div> -->
 
-
-   <div *ngIf="prestadores !== undefined">
-     <div class="row">
-
-        <div class="col-lg-3 col-xs-6" *ngFor="let prestador of prestadores">
-            <!-- small box -->
-            <div class="small-box bg-cyan">
-              <div class="inner">
-                <h3>{{prestador.tratamento}}</h3>
-                <h4>{{prestador.nome}}</h4>
-              </div>
-              <div class="icon">
-                <img [src]="prestador.uriFoto" class="img-circle foto-medico" [alt]="prestador.nome">
-              </div>
-              <a href="#" class="small-box-footer">
-                Consultar Agenda <i class="fa fa-arrow-circle-right"></i>
-              </a>
-            </div>
-          </div>
+<div *ngIf="prestadores !== undefined; else consultandoPrestadores">
+  <div class="row">
+    <div class="col-lg-3 col-xs-6" *ngFor="let prestador of prestadores">
+      <!-- small box -->
+      <div class="small-box bg-cyan">
+        <div class="inner">
+          <h3>{{ prestador.tratamento }}</h3>
+          <h4>{{ prestador.nome }}</h4>
         </div>
+        <div class="icon">
+          <img
+            [src]="prestador.uriFoto"
+            class="img-circle foto-medico"
+            [alt]="prestador.nome"
+          />
+        </div>
+        <a href="#" class="small-box-footer">
+          Consultar Agenda <i class="fa fa-arrow-circle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #consultandoPrestadores>
+  <h3><i class="fa fa-refresh fa-spin"></i> Consultando prestadores...</h3>
+</ng-template>
