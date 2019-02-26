@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
 export class PrestadorService {
   constructor(private http: Http) {}
 
-  public pesquisaPrestadores(): Observable<any> {
+  public pesquisaPrestadores(): Observable<Prestador[]> {
     return this.http
     .get(`${URL_API}/Prestadores/Consultar`)
       .retry(10)

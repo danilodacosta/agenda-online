@@ -10,14 +10,13 @@ import { Prestador } from '../shared/prestador.model';
 })
 export class AgendamentoComponent implements OnInit, OnDestroy {
 
-  public prestadores: any = [];
+  public prestadores: Array<Prestador>;
 
-  constructor( private prestadorService: PrestadorService) { }
+  constructor(private prestadorService: PrestadorService) { }
 
   ngOnInit() {
     this.prestadorService.pesquisaPrestadores()
-    .subscribe((prestadores: any[]) =>  this.prestadores = prestadores);
-    // console.log(this.prestadores);
+      .subscribe((prestadores: Prestador[]) => this.prestadores = prestadores);
   }
 
   ngOnDestroy() {
