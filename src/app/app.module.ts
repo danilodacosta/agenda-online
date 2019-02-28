@@ -11,6 +11,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { MenuComponent } from './menu/menu.component';
 import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { RouterModule } from '@angular/router';
+import { ClinicasComponent } from './clinicas/clinicas.component';
+import { PrestadoresComponent } from './clinicas/prestadores/prestadores.component';
+import { HorariosDisponiveisComponent } from './clinicas/prestadores/horarios-disponiveis/horarios-disponiveis.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     SettingsComponent,
     MenuComponent,
-    AgendamentoComponent
+    AgendamentoComponent,
+    ClinicasComponent,
+    PrestadoresComponent,
+    HorariosDisponiveisComponent
   ],
   imports: [
     BrowserModule,
