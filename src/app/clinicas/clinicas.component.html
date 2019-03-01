@@ -1,3 +1,27 @@
-<p>
-  clinicas works!
-</p>
+<div *ngIf="empreendimentos !== undefined; else empreendimentosPrestadores">
+  <div class="row">
+    <div class="col-lg-4 col-xs-6" *ngFor="let empreendimento of empreendimentos">
+      <!-- small box -->
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h4>{{ empreendimento.nomeFantasia }}</h4>
+          <p>{{ empreendimento.razaoSocial }}</p>
+          <p>Bairro: {{ empreendimento.bairro }}</p>
+          <p>{{ empreendimento.endereco }}</p>
+          <p><i class="fa fa-phone"></i> {{ empreendimento.telefone }}</p>
+          
+        </div>
+        <div class="icon">
+          <i class="fa fa-hospital-o"></i>
+        </div>
+        <a href="#" class="small-box-footer">
+          Consultar Médicos <i class="fa fa-arrow-circle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #empreendimentosPrestadores>
+  <h3><i class="fa fa-refresh fa-spin"></i> Consultando empreendimentos...</h3>
+</ng-template>
