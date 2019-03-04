@@ -1,0 +1,7 @@
+<div *ngIf="idEmpreendimento === undefined">
+    <app-clinicas (idEmpreendimento)="setIdEmpreendimento($event)" ></app-clinicas>
+</div>
+
+<div *ngIf="idEmpreendimento !== undefined">
+    <app-prestadores [idEmpreendimento]="idEmpreendimento"></app-prestadores>
+</div>

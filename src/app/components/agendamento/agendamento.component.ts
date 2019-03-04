@@ -7,9 +7,17 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AgendamentoComponent implements OnInit, OnDestroy {
 
+
+  public idEmpreendimento: number;
+
   constructor() {}
 
   ngOnInit() {}
+
+  public setIdEmpreendimento(event: number): void {
+    console.log('agendamento :' + event);
+    this.idEmpreendimento = event;
+  }
 
   ngOnDestroy() {}
 

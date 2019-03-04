@@ -1,20 +1,25 @@
+<div class="alert alert-info alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+  <h4><i class="icon fa fa-info"></i> Informação!</h4>
+  Selecione uma Clinica para prosseguir com o Agendamento
+</div>
 <div *ngIf="empreendimentos !== undefined; else empreendimentosPrestadores">
   <div class="row">
     <div class="col-lg-4 col-xs-6" *ngFor="let empreendimento of empreendimentos">
       <!-- small box -->
-      <div class="small-box bg-aqua">
+      <div class="small-box bg-cyan">
         <div class="inner">
           <h4>{{ empreendimento.nomeFantasia }}</h4>
           <p>{{ empreendimento.razaoSocial }}</p>
           <p>Bairro: {{ empreendimento.bairro }}</p>
           <p>{{ empreendimento.endereco }}</p>
           <p><i class="fa fa-phone"></i> {{ empreendimento.telefone }}</p>
-          
+
         </div>
         <div class="icon">
           <i class="fa fa-hospital-o"></i>
         </div>
-        <a href="#" class="small-box-footer">
+        <a href="javascript:void(0)" (click)="selecionarClinica(empreendimento.id)" class="small-box-footer">
           Consultar Médicos <i class="fa fa-arrow-circle-right"></i>
         </a>
       </div>
@@ -23,5 +28,5 @@
 </div>
 
 <ng-template #empreendimentosPrestadores>
-  <h3><i class="fa fa-refresh fa-spin"></i> Consultando empreendimentos...</h3>
+  <p><i class="fa fa-refresh fa-spin"></i> Consultando empreendimentos...</p>
 </ng-template>

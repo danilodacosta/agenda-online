@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PrestadorService } from '../../prestador.service';
 import { Prestador } from '../../shared/prestador.model';
 
@@ -11,13 +11,22 @@ import { Prestador } from '../../shared/prestador.model';
 })
 export class PrestadoresComponent implements OnInit {
 
-  public prestadores: Array<Prestador>;
+  public prestadores: Array<any>;
+
+  @Input() public idEmpreendimento: number;
 
   constructor(private prestadorService: PrestadorService) { }
 
   ngOnInit() {
-      this.prestadorService.pesquisaPrestadores()
-      .subscribe((prestadores: Prestador[]) => this.prestadores = prestadores);
+
+     this.prestadorService.pesquisarPrestadoresPorEmpreendimento(this.idEmpreendimento)
+     .subscribe((prestadores: any[]) => this.prestadores = prestadores);
+
+
+  }
+
+  public novaClinica(): void {
+    this.idEmpreendimento = null;
   }
 
 }

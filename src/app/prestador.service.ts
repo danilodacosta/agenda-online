@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Prestador } from './shared/prestador.model';
 
 import { URL_API } from './app.api';
+import { Query } from '../app/shared/querys';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
@@ -22,6 +23,15 @@ export class PrestadorService {
       .map(resposta => JSON.parse(resposta.json()).classe.prestadores)._do(data => console.log(data))
       .catch((e: any) => Observable.throw(this.errorHandler(e)));
     }
+
+    public pesquisarPrestadoresPorEmpreendimento(idEmpreendimento: number): Observable<any> {
+      return this.http
+      .get(`${URL_API}/GenericQuery/Executar?Query=${Query.consultarPrestadoresPorEmpreendimento(idEmpreendimento)}`)
+      .retry(10)
+      .map(resposta => JSON.parse(resposta.json()).classe)._do(data => console.log(data))
+      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+    }
+
 
     private errorHandler(error: any): void {
       console.log('error ao consultar prestadores : ' + error);
