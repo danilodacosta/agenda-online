@@ -1,0 +1,85 @@
+
+<section class="content-header">
+    <h1>
+       Selecione um Médico para consultar a Agenda.
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/clinicas']"><i class="fa fa-calendar"></i> Agendamento</a></li>
+      <li><a [routerLink]="['/clinicas']">Clinicas</a></li>
+      <li class="active">Prestadores</li>
+    </ol>
+  </section>
+
+<section class="content">
+    <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Prestadores</h3>
+        </div>
+
+          <div class="box-body">
+
+              <div *ngIf="prestadores !== undefined; else consultandoPrestadores">
+                  <diV *ngIf="prestadores.length > 0; else semPrestadores">
+                    <section class="content">
+                        <div class="form-group">
+                            <label>Convênio</label>
+                            <select class="form-control">
+                              <option>Particular</option>
+                              <option>option 2</option>
+                              <option>option 3</option>
+                              <option>option 4</option>
+                              <option>option 5</option>
+                            </select>
+                          </div>
+                      <div class="row">
+                        <div class="col-lg-4 col-xs-6" *ngFor="let prestador of prestadores">
+                          <!-- small box -->
+                          <a [routerLink]="['/clinicas', prestador.id]">
+                                  <div class="small-box bg-cyan">
+                            <div class="inner">
+                              <h3>{{ prestador.tratamento }}</h3>
+                              <h4>{{ prestador.nome }}</h4>
+                            </div>
+                            <div class="icon">
+                              <img
+                                [src]="prestador.uriFoto"
+                                class="img-circle foto-medico"
+                                [alt]="prestador.nome"
+                              />
+                            </div>
+                            <a href="#" class="small-box-footer">
+                              Consultar Agenda <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                          </div>
+                          </a>
+                        </div>
+                      </div>
+                   </section>
+                   </diV>
+
+                  <ng-template #semPrestadores>
+                    <div class="alert alert-warning alert-dismissible">
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-hidden="true"
+                      >
+                        ×
+                      </button>
+                      <h4><i class="icon fa fa-warning"></i> Atenção!</h4>
+                      Nenhum Médico encontrado para a clinica selecionada.
+                    </div>
+                  </ng-template>
+                </div>
+
+          </div>
+          <!-- /.box-body -->
+      </div>
+</section>
+
+
+
+<ng-template #consultandoPrestadores>
+  <p><i class="fa fa-refresh fa-spin"></i> Consultando prestadores...</p>
+</ng-template>

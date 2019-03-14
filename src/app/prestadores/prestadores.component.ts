@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PrestadorService } from '../../prestador.service';
-import { Prestador } from '../../shared/prestador.model';
+import { PrestadorService } from '../prestador.service';
+import { Prestador } from '../shared/prestador.model';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,14 +16,12 @@ export class PrestadoresComponent implements OnInit {
 
   @Input() public idEmpreendimento: number;
 
-  constructor(private prestadorService: PrestadorService) { }
+  constructor(private prestadorService: PrestadorService, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
-     this.prestadorService.pesquisarPrestadoresPorEmpreendimento(this.idEmpreendimento)
+     this.prestadorService.pesquisarPrestadoresPorEmpreendimento(this.route.snapshot.params['id'])
      .subscribe((prestadores: any[]) => this.prestadores = prestadores);
-
-
   }
 
   public novaClinica(): void {

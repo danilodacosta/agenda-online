@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { EmpreendimentoService } from '../../empreendimento.service';
-import { Empreendimento } from '../../shared/Empreendimento.model';
+import { EmpreendimentoService } from '../empreendimento.service';
+import { Empreendimento } from '../shared/Empreendimento.model';
 
 @Component({
   selector: 'app-clinicas',

@@ -1,0 +1,13 @@
+.jumbotron {
+  background-color: #fff;
+  text-align: center;
+ }
+
+.content {
+  min-height: 250px;
+  padding: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}

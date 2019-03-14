@@ -1,21 +1,24 @@
-<app-header></app-header>
-<app-menu></app-menu>
-<div class="content-wrapper">
+<div class="wrapper">
 
-  <section class="content-header">
-    <h1>
-      <i class="fa fa-calendar-plus-o"></i> Agendamentos
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="#">Início</a></li>
-      <li class="active">Agendamento</li>
-    </ol>
-  </section>
+  <app-header></app-header>
 
-  <!-- Main content -->
-  <section class="content">
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+    <div class="container">
+
     <router-outlet></router-outlet>
-  </section>
+
+    </div>
+  </div>
+
+  <!-- snakbar deve ser aqui -->
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.0
+      </div>
+      <strong>Nio</strong> - Núcleo Integrado de Odontologia
+    </div>
+  </footer>
 </div>
-<app-footer></app-footer>
-<app-settings></app-settings>

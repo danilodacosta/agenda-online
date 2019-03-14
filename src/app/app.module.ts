@@ -5,27 +5,25 @@ import { HttpModule } from '@angular/http';
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './template/header/header.component';
-import { FooterComponent } from './template/footer/footer.component';
-import { SettingsComponent } from './template/settings/settings.component';
-import { MenuComponent } from './template/menu/menu.component';
-import { AgendamentoComponent } from './components/agendamento/agendamento.component';
+import { HeaderComponent } from './header/header.component';
+import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { RouterModule } from '@angular/router';
-import { ClinicasComponent } from './components/clinicas/clinicas.component';
-import { PrestadoresComponent } from './components/prestadores/prestadores.component';
-import { HorariosDisponiveisComponent } from './components/prestadores/horarios-disponiveis/horarios-disponiveis.component';
+import { ClinicasComponent } from './clinicas/clinicas.component';
+import { PrestadoresComponent } from './prestadores/prestadores.component';
+import { HorariosDisponiveisComponent } from './prestadores/horarios-disponiveis/horarios-disponiveis.component';
+import { HomeComponent } from './home/home.component';
+import { ChatComponent } from './home/chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
-    SettingsComponent,
-    MenuComponent,
     AgendamentoComponent,
     ClinicasComponent,
     PrestadoresComponent,
-    HorariosDisponiveisComponent
+    HorariosDisponiveisComponent,
+    HomeComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

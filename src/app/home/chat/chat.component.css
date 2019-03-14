@@ -1,0 +1,11 @@
+ .b-agent-demo_powered_by {
+  display: none;
+}
+
+iframe {
+  width: 350px;
+  height: 430px;
+	position: fixed;
+	bottom: 60px;
+	right: 32px;
+}

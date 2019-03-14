@@ -1,0 +1,53 @@
+
+<section class="content-header">
+    <h1>
+       Selecione uma clinica para prosseguir com o Agenda.
+    </h1>
+    <ol class="breadcrumb">
+      <li><a [routerLink]="['/clinicas']"><i class="fa fa-calendar"></i> Agendamento</a></li>
+      <li class="active"><a [routerLink]="['/clinicas']">Clinicas</a></li>
+    </ol>
+  </section>
+
+  <section class="content">
+      <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Clinicas</h3>
+          </div>
+
+            <div class="box-body">
+<div *ngIf="empreendimentos !== undefined; else empreendimentosPrestadores">
+  <section class="content">
+    <div class="row">
+      <div class="col-lg-4 col-xs-6"
+        *ngFor="let empreendimento of empreendimentos">
+        <!-- small box -->
+        <a [routerLink]="['/clinicas', empreendimento.id]">
+          <div class="small-box bg-cyan">
+            <div class="inner">
+              <h4>{{ empreendimento.nomeFantasia }}</h4>
+              <p>{{ empreendimento.razaoSocial }}</p>
+              <p>Bairro: {{ empreendimento.bairro }}</p>
+              <p>{{ empreendimento.endereco }}</p>
+              <p><i class="fa fa-phone"></i> {{ empreendimento.telefone }}</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-hospital-o"></i>
+            </div>
+            <a
+              href="javascript:void(0)"
+              (click)="selecionarClinica(empreendimento.id)"
+              class="small-box-footer"
+            >
+              Consultar Médicos <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+<ng-template #empreendimentosPrestadores>
+  <p><i class="fa fa-refresh fa-spin"></i> Consultando empreendimentos...</p>
+</ng-template>
