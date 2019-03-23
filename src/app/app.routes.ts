@@ -5,6 +5,6 @@ import { PrestadoresComponent } from './prestadores/prestadores.component';
 
 export const ROUTES: Routes = [
     { path: '' , component: HomeComponent },
-    { path: 'clinicas' , component: AgendamentoComponent },
-    {path: 'clinicas/:id', component: PrestadoresComponent}
+    { path: 'empreendimentos' , component: AgendamentoComponent },
+    {path: 'empreendimentos/:id', component: PrestadoresComponent}
 ];

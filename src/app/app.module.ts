@@ -13,6 +13,7 @@ import { PrestadoresComponent } from './prestadores/prestadores.component';
 import { HorariosDisponiveisComponent } from './prestadores/horarios-disponiveis/horarios-disponiveis.component';
 import { HomeComponent } from './home/home.component';
 import { ChatComponent } from './home/chat/chat.component';
+import { EmpreendimentosComponent } from './empreendimentos/empreendimentos.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ChatComponent } from './home/chat/chat.component';
     PrestadoresComponent,
     HorariosDisponiveisComponent,
     HomeComponent,
-    ChatComponent
+    ChatComponent,
+    EmpreendimentosComponent
   ],
   imports: [
     BrowserModule,
