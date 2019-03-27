@@ -1,7 +1,181 @@
-<div *ngIf="idEmpreendimento === undefined">
+<!--<div *ngIf="idEmpreendimento === undefined">
     <app-empreendimentos (idEmpreendimento)="setIdEmpreendimento($event)" ></app-empreendimentos>
 </div>
 
 <div *ngIf="idEmpreendimento !== undefined">
     <app-prestadores [idEmpreendimento]="idEmpreendimento"></app-prestadores>
 </div>
+-->
+<section class="content">
+
+  <div class="row">
+    <div class="col-md-3">
+
+      <!-- Profile Image -->
+      <div class="box box-primary">
+        <div class="box-body box-profile">
+          <img class="profile-user-img img-responsive img-circle" src="https://firebasestorage.googleapis.com/v0/b/agenda-25f4d.appspot.com/o/Dr%20Jo%C3%A3o%20Evandro.jpg?alt=media&token=801a18c2-bc75-4a17-98f1-8f7cb2575651" alt="User profile picture">
+
+          <h3 class="profile-username text-center">Dr</h3>
+
+          <p class="text-muted text-center">João Evandro</p>
+
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              <b>Total de consultas</b> <a class="pull-right">1,322</a>
+            </li>
+            <li class="list-group-item">
+              <b>Facebook</b><a class="btn btn-social-icon btn-facebook pull-right "><i class="fa fa-facebook"></i></a>
+            </li>
+            <li class="list-group-item">
+              <b>Instagram</b> <a class="btn btn-social-icon btn-instagram pull-right"><i class="fa fa-instagram"></i></a>
+            </li>
+          </ul>
+
+          <a class="btn btn-block btn-social btn-dropbox">
+            <i class="fa fa-book"></i>Profissional
+          </a>
+
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+
+      <!-- About Me Box -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Sobre o Prestador</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+
+          <strong><i class="fa fa-map-marker margin-r-5"></i> Local de Atendimento</strong>
+          <p class="text-muted">Núcleo Integrado de Odontologia, Edifício Metropolitan Tower, Rua dos Mundurucus</p>
+          <p class="text-muted">Sala 1104</p>
+          <p class="text-muted">Cremação</p>
+
+          <a class="btn btn-block btn-social btn-dropbox btn-verde">
+            <i class="fa fa-map-pin"></i>ver no mapa
+          </a>
+
+          <hr>
+
+          <strong><i class="fa fa-phone margin-r-5"></i> Telefones</strong>
+          <p class="text-muted">
+            (91)3230-1787 |
+            (91)98083-0680
+          </p>
+          <hr>
+          <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+          <p>
+            <span class="label label-danger">UI Design</span>
+            <span class="label label-success">Coding</span>
+            <span class="label label-info">Javascript</span>
+            <span class="label label-warning">PHP</span>
+            <span class="label label-primary">Node.js</span>
+          </p>
+
+          <hr>
+
+          <strong><i class="fa fa-file-text-o margin-r-5"></i> Nota</strong>
+
+          <p>Preso por um atendimento de qualidade e dedicação maxima para a sua saúde e bem estar.</p>
+        </div>
+        <!-- /.box-body -->
+      </div>
+      <!-- /.box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-9">
+      <div class="box box-primary">
+        <div class="box-header">
+          <h3 class="box-title">Datas e Horários Disponíveis</h3>
+        </div>
+        <div class="box-body">
+          <div class="form-group">
+            <label>Data:</label>
+
+            <div class="input-group date" id='datetimepicker2'>
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="text" class="form-control pull-right" id="datepicker">
+            </div>
+
+            <!-- /.input group -->
+          </div>
+
+
+
+
+
+          <div class="box-body">
+            <!-- Date -->
+            <div class="form-group">
+              <label>Date:</label>
+
+              <div class="input-group date">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="datepicker">
+              </div>
+              <!-- /.input group -->
+            </div>
+            <!-- /.form group -->
+
+            <!-- Date range -->
+            <div class="form-group">
+              <label>Date range:</label>
+
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-calendar"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="reservation">
+              </div>
+              <!-- /.input group -->
+            </div>
+            <!-- /.form group -->
+
+            <!-- Date and time range -->
+            <div class="form-group">
+              <label>Date and time range:</label>
+
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-clock-o"></i>
+                </div>
+                <input type="text" class="form-control pull-right" id="reservationtime">
+              </div>
+              <!-- /.input group -->
+            </div>
+            <!-- /.form group -->
+
+            <!-- Date and time range -->
+            <div class="form-group">
+              <label>Date range button:</label>
+
+              <div class="input-group">
+                <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                  <span>
+                    <i class="fa fa-calendar"></i> Date range picker
+                  </span>
+                  <i class="fa fa-caret-down"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.form group -->
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- /.col -->
+  </div>
+  <!-- /.row -->
+
+</section>

@@ -1,0 +1,22 @@
+.btn-social-icon {
+  height: 25px;
+  width: 25px;
+}
+
+i.fa.fa-facebook {
+  font-size: 20px;
+  margin-top: -4px;
+}
+i.fa.fa-instagram {
+  font-size: 20px;
+  margin-top: -5px;
+}
+
+.btn.btn-block.btn-social.btn-dropbox {
+  text-align: center;
+  font-weight: bold;
+ }
+
+ .btn-verde {
+  background-color: #00a65a;
+ }

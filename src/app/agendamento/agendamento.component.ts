@@ -15,8 +15,8 @@ export class AgendamentoComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   public setIdEmpreendimento(event: number): void {
-    console.log('agendamento :' + event);
-    this.idEmpreendimento = event;
+ //   console.log('agendamento :' + event);
+   // this.idEmpreendimento = event;
   }
 
   ngOnDestroy() {}
