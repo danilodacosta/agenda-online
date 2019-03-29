@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentChecked } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-chat',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {
+    $(document).ready(function() {
+      const $chatbox = $('.chatbox'),
+        $chatboxTitle = $('.chatbox__title'),
+        $chatboxTitleClose = $('.chatbox__title__close');
 
-   ngOnInit() {
-
+      $chatboxTitle.on('click', function() {
+        $chatbox.toggleClass('chatbox--tray');
+      });
+      $chatboxTitleClose.on('click', function(e) {
+        e.stopPropagation();
+        $chatbox.addClass('chatbox--closed');
+      });
+      $chatbox.on('transitionend', function() {
+        if ($chatbox.hasClass('chatbox--closed')) {
+          $chatbox.remove();
+        }
+      });
+    });
   }
 }

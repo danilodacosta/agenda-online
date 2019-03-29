@@ -3,7 +3,8 @@
     src="https://console.dialogflow.com/api-client/demo/embedded/0a7dd871-0cbb-444e-9cfc-edd8dc471227">
 </iframe>
 -->
-<div class="chatbox chatbox--tray">
+
+<div class="chatbox chatbox--tray box-success">
   <div class="chatbox__title">
       <h5><a href="#">Chat Online</a></h5>
       <button class="chatbox__title__tray">
@@ -18,51 +19,104 @@
           </span>
       </button>
   </div>
-  <div class="chatbox__body">
-      <div class="chatbox__body__message chatbox__body__message--left">
-          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="Picture">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="chatbox__body__message chatbox__body__message--right">
-          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/arashmil/128.jpg" alt="Picture">
-          <p>Nulla vel turpis vulputate, tincidunt lectus sed, porta arcu.</p>
-      </div>
-      <div class="chatbox__body__message chatbox__body__message--left">
-          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="Picture">
-          <p>Curabitur consequat nisl suscipit odio porta, ornare blandit ante maximus.</p>
-      </div>
-      <div class="chatbox__body__message chatbox__body__message--right">
-          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/arashmil/128.jpg" alt="Picture">
-          <p>Cras dui massa, placerat vel sapien sed, fringilla molestie justo.</p>
-      </div>
-      <div class="chatbox__body__message chatbox__body__message--right">
-          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/arashmil/128.jpg" alt="Picture">
-          <p>Praesent a gravida urna. Mauris eleifend, tellus ac fringilla imperdiet, odio dolor sodales libero, vel mattis elit mauris id erat. Phasellus leo nisi, convallis in euismod at, consectetur commodo urna.</p>
-      </div>
-  </div>
-  <textarea class="chatbox__message" placeholder="digite sua mensagem"></textarea>
-</div>
-<script>
-(function($) {
-    $(document).ready(function() {
-        var $chatbox = $('.chatbox'),
-            $chatboxTitle = $('.chatbox__title'),
-            $chatboxTitleClose = $('.chatbox__title__close')
 
-        $chatboxTitle.on('click', function() {
-            $chatbox.toggleClass('chatbox--tray');
-        });
-        $chatboxTitleClose.on('click', function(e) {
-            e.stopPropagation();
-            $chatbox.addClass('chatbox--closed');
-        });
-        $chatbox.on('transitionend', function() {
-            if ($chatbox.hasClass('chatbox--closed')) $chatbox.remove();
-        });
-        $chatboxCredentials.on('submit', function(e) {
-            e.preventDefault();
-            $chatbox.removeClass('chatbox--empty');
-        });
-    });
-})(jQuery);
-</script>
+<!-- /.box-header -->
+          <div class="direct-chat direct-chat-success">
+            <!-- Conversations are loaded here -->
+            <div class="direct-chat-messages">
+              <!-- Message. Default to the left -->
+              <div class="direct-chat-msg">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-name pull-left">Nio Boot - Assistente virtual</span>
+                  <span class="direct-chat-timestamp pull-right">29 Mar 14:01 pm</span>
+                </div>
+                <!-- /.direct-chat-info -->
+                <img class="direct-chat-img" src="../assets/chatbot-thumb.png" alt="Chat-boot"><!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
+                  Núcleo Integrado de Odontologia, Boa Tarde! Você deseja marcar ou remarcar uma consulta, cancelar uma consulta ou verificar consulta já marcada?
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+              <!-- /.direct-chat-msg -->
+
+              <!-- Message to the right -->
+              <div class="direct-chat-msg right">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-timestamp pull-left">29 Mar 14:05 pm</span>
+                </div>
+                <!-- /.direct-chat-info -->
+        <!--<img class="direct-chat-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                 <div class="direct-chat-text">
+                  Marcar uma Consulta
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+
+
+      <div class="direct-chat-msg">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-name pull-left">Nio Boot - Assistente virtual</span>
+                  <span class="direct-chat-timestamp pull-right">29 Mar 14:06 pm</span>
+                </div>
+                <!-- /.direct-chat-info -->
+                <img class="direct-chat-img" src="../assets/chatbot-thumb.png" alt="Chat-boot"><!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
+                  A consulta será particular ou através de um convênio?
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+
+
+       <!-- Message to the right -->
+              <div class="direct-chat-msg right">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-timestamp pull-left">29 Mar 14:07 pm</span>
+                </div>
+                <!-- /.direct-chat-info -->
+        <!--<img class="direct-chat-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+                 <div class="direct-chat-text">
+                  Particular
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+
+      <div class="direct-chat-msg">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-name pull-left">Nio Boot - Assistente virtual</span>
+                  <span class="direct-chat-timestamp pull-right">29 Mar 14:09 pm</span>
+                </div>
+                <!-- /.direct-chat-info -->
+                <img class="direct-chat-img" src="../assets/chatbot-thumb.png" alt="Chat-boot"><!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
+                  Entendi! Então vai ser PARTICULAR, agora me informe o seu dentista!
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+
+
+       <!-- Message to the right -->
+              <div class="direct-chat-msg right">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-timestamp pull-left">29 Mar 14:10 pm</span>
+                </div>
+                <!-- /.direct-chat-info -->
+          <!--<img class="direct-chat-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="Message User Image">-->
+                 <div class="direct-chat-text">
+                  Dr. João
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+        </div>
+
+      <div class="box-footer">
+            <form action="#" method="post">
+              <div class="input-group">
+                <input type="text" name="message" placeholder="Enviar um mensagem" class="form-control" x-webkit-speech="x-webkit-speech">
+                    <span class="input-group-btn">
+                      <button type="submit" class="btn btn-success btn-flat">Enviar
+          <i class="fa fa-send-o"></i></button>
+                    </span>
+              </div>
+            </form>
+          </div>
+</div>
