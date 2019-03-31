@@ -8,59 +8,72 @@
         ><i class="fa fa-calendar"></i> Agendamento</a
       >
     </li>
-    <li class="active"><a [routerLink]="['/empreendimentos']">Empreendimentos</a></li>
+    <li class="active">
+      <a [routerLink]="['/empreendimentos']">Empreendimentos</a>
+    </li>
   </ol>
 </section>
 
 <section class="content">
-  <div class="box box-info box-solid">
+  <div class="box box-success box-solid">
     <div class="box-header with-border">
       <h3 class="box-title">Empreendimentos</h3>
     </div>
-
-    <div class="box-body">
-      <div
-        *ngIf="empreendimentos !== undefined; else empreendimentosPrestadores"
-      >
-        <section class="content">
-          <div class="row">
-            <div
-              class="col-lg-4 col-xs-12"
+    <div class="row">
+      <div class="box-body">
+        <div
+          *ngIf="empreendimentos !== undefined; else empreendimentosPrestadores"
+        >
+          <ul class="products-list product-list-in-box">
+            <li
+              class="item"
+              style="padding: 15px; margin: 9px;  border-radius: 7px;"
               *ngFor="let empreendimento of empreendimentos"
             >
-              <!-- small box -->
-              <a [routerLink]="['/empreendimentos', empreendimento.id]">
-                <div class="small-box bg-aqua">
-                  <div class="inner">
-                    <h4>{{ empreendimento.nomeFantasia }}</h4>
-                    <p>{{ empreendimento.razaoSocial }}</p>
-                    <p>Bairro: {{ empreendimento.bairro }}</p>
-                    <p>{{ empreendimento.endereco }}</p>
-                    <p>
-                      <i class="fa fa-phone"></i> {{ empreendimento.telefone }}
-                    </p>
-                  </div>
-                  <div class="icon">
-                    <i class="fa fa-hospital-o"></i>
-                  </div>
-                  <a
-                    href="javascript:void(0)"
-                    (click)="selecionarEmpreendimento(empreendimento.id)"
-                    class="small-box-footer"
-                  >
-                    Consultar Prestadores <i class="fa fa-arrow-circle-right"></i>
-                  </a>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
+              <div class="product-info">
+                <a
+                  class="product-title"
+                  [routerLink]="['/empreendimentos', empreendimento.id]"
+                >
+                  <h4 style="font-weight: bold; color: #00a65a">
+                    <i class="fa fa-map-marker margin-r-5"></i
+                    >{{ empreendimento.nomeFantasia }} -
+                    {{ empreendimento.razaoSocial }}
+                  </h4>
+                  <span class="product-description" style="margin-left: 16px">
+                    <b>{{ empreendimento.endereco }}</b>
+                  </span>
+                  <span class="product-description" style="margin-left: 16px">
+                    {{ empreendimento.complemento }}
+                  </span>
+                  <span class="product-description" style="margin-left: 16px">
+                    <b>Bairro: </b> {{ empreendimento.bairro }}
+                    <i class="fa fa-phone margin-r-1" style="color:#3c8dbc; margin-left: 10px;"></i
+                      ><b style="color:#3c8dbc">{{ empreendimento.telefone }}</b>
+
+                  </span>
+                </a>
+                <a
+                  style="margin-left: 10px; margin-top: 10px;"
+                  class="badge bg-green margin-r-5"
+                  data-toggle="modal"
+                  data-target="#modal-info"
+                >
+                  <i class="fa fa-map-marker margin-r-5"></i> VER NO MAPA
+                </a>
+              </div>
+
+              <hr />
+            </li>
+          </ul>
+        </div>
+        <ng-template #empreendimentosPrestadores>
+          <p style="margin-left: 25px;">
+            <i class="fa fa-refresh fa-spin"></i> Consultando empreendimentos...
+          </p>
+        </ng-template>
       </div>
     </div>
-    <ng-template #empreendimentosPrestadores>
-      <p>
-        <i class="fa fa-refresh fa-spin"></i> Consultando empreendimentos...
-      </p>
-    </ng-template>
   </div>
+  <app-empreendimento-detalhe></app-empreendimento-detalhe>
 </section>

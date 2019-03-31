@@ -14,6 +14,7 @@ import { HorariosDisponiveisComponent } from './prestadores/horarios-disponiveis
 import { HomeComponent } from './home/home.component';
 import { ChatComponent } from './home/chat/chat.component';
 import { EmpreendimentosComponent } from './empreendimentos/empreendimentos.component';
+import { EmpreendimentoDetalheComponent } from './empreendimentos/empreendimento-detalhe/empreendimento-detalhe.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EmpreendimentosComponent } from './empreendimentos/empreendimentos.comp
     HorariosDisponiveisComponent,
     HomeComponent,
     ChatComponent,
-    EmpreendimentosComponent
+    EmpreendimentosComponent,
+    EmpreendimentoDetalheComponent
   ],
   imports: [
     BrowserModule,

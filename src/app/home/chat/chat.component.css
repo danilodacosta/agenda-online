@@ -18,7 +18,8 @@
 }
 
 .chatbox--tray {
-  bottom: -350px;
+    bottom: -333px;
+   /*bottom: -350px;*/
 }
 
 .chatbox--closed {

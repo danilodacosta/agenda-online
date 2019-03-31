@@ -20,6 +20,7 @@ export class EmpreendimentosComponent implements OnInit {
   ngOnInit() {
     this.empreendimentoService.pesquisarEmpreendimentos()
     .subscribe((empreendimentos: Empreendimento[]) => this.empreendimentos = empreendimentos);
+    console.log(this.empreendimentos);
   }
 
   public selecionarEmpreendimento(idEmpreendimento: number): void {
