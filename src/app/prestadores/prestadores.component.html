@@ -18,32 +18,36 @@
     <div class="box-header with-border">
       <h3 class="box-title">Prestadores</h3>
       <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse">
-          <i class="fa fa-minus"></i>
-        </button>
       </div>
     </div>
 
     <div class="box-body">
-      <div *ngIf="prestadores !== undefined; else consultandoPrestadores">
-        <diV *ngIf="prestadores.length > 0; else semPrestadores">
-          <section class="content">
+         <section class="content">
             <div class="form-group">
-              <label>Convênio</label>
-              <select class="form-control">
-                <option>Particular</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
+              <div class="col-sm-6">
+              <label>Especialidade</label>
+              <select [(ngModel)]="especialidadeSelecionada" (ngModelChange)="onChangeEspecialidade($event)" name="especialidade" class="form-control select2">
+                <option [value]="0" selected>Selecione</option>
+                <option [value]="especialidade.id" *ngFor="let especialidade of especialidades">{{especialidade.nome}}</option>
               </select>
             </div>
 
-            <span class="label label-warning pull-right">
-              prestadores encontrados - {{ prestadores.length }}
-            </span>
+            <div class="col-sm-4">
+              <label>Convênio</label>
+               <select [(ngModel)]="convenioSelecionado" (ngModelChange)="onChangeConvenio($event)" name="convenio" class="form-control select2">
+                <option *ngIf='especialidadeSelecionada == 0' value="0">Selecione</option>
+                <option *ngFor="let convenio of convenios" [ngValue]="convenio"> {{convenio.nome}}</option>
+              </select>
+            </div>
 
-            <div class="row">
+            <div class="col-sm-2" *ngIf="uriFotoConvenio !== undefined">
+               <img [src]="uriFotoConvenio" class="img-convenio img-fluid img-thumbnail" alt="carregando imagem... ">
+            </div>
+
+            </div>
+
+            <hr/>
+            <div class="row" *ngIf="prestadores !== undefined" style="margin-left: 16px">
               <div class="box-body">
                 <ul
                   class="products-list product-list-in-box"
@@ -58,11 +62,11 @@
                           [alt]="prestador.nome"
                         />
                       </div>
-                      <div class="product-info">
-                        {{ prestador.tratamento }}
+                      <div class="product-info" style="color: #00a65a">
+                       <h4> {{ prestador.tratamento }} {{ prestador.nome }}</h4>
 
-                        <span class="product-description">
-                          {{ prestador.nome }}
+                        <span class="product-description" style="margin-top: -10px;">
+                          <b>{{ prestador.tipoEspecialidade }}</b>
                         </span>
                       </div>
                     </li>
@@ -95,28 +99,7 @@
                         </div> -->
             </div>
           </section>
-        </diV>
-
-        <ng-template #semPrestadores>
-          <div class="alert alert-warning alert-dismissible">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="alert"
-              aria-hidden="true"
-            >
-              ×
-            </button>
-            <h4><i class="icon fa fa-warning"></i> Atenção!</h4>
-            Nenhum prestador encontrado para o empreendimento selecionado.
-          </div>
-        </ng-template>
       </div>
     </div>
     <!-- /.box-body -->
-  </div>
-</section>
-
-<ng-template #consultandoPrestadores>
-  <p><i class="fa fa-refresh fa-spin"></i> Consultando prestadores...</p>
-</ng-template>
+  </section>

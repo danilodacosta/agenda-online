@@ -15,13 +15,14 @@
   margin-right: 5px;
 }
 
-.widget-user-username, .widget-user-desc {
+.widget-user-username,
+.widget-user-desc {
   margin-left: 0;
 }
 
 .bg-cyan {
   background-color: #28abaa;
-  color: #FFF;
+  color: #fff;
 }
 
 .box {
@@ -55,7 +56,14 @@
   border-radius: 50%;
   position: relative;
   top: -15px;
-  border: 2px solid #FFF;
+  border: 2px solid #fff;
   overflow: hidden;
   margin: auto;
+}
+
+.img-convenio {
+  height: 80px;
+  width: 150px;
+  padding: 5px;
+  margin-top: 2px;
 }

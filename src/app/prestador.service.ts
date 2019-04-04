@@ -32,6 +32,15 @@ export class PrestadorService {
       .catch((e: any) => Observable.throw(this.errorHandler(e)));
     }
 
+    public pesquisarEspecialidadesPorEmpreendimento(idEmpreendimento: number): Observable<any> {
+      return this.http
+      .get(`${URL_API}/GenericQuery/Executar?Query=${Query.consultarEspecialidadePorEmpreendimento(idEmpreendimento)}`)
+      .retry(10)
+      .map(resposta => JSON.parse(resposta.json()).classe)._do(data => console.log(data))
+      .catch((e: any) => Observable.throw(this.errorHandler(e)));
+    }
+
+
 
     private errorHandler(error: any): void {
       console.log('error ao consultar prestadores : ' + error);
