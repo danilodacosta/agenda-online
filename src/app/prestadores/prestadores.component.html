@@ -14,92 +14,123 @@
 </section>
 
 <section class="content">
-  <div class="box box-success box-solid">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="box box-success box-solid">
+        <div class="box-header with-border">
+          <h3 class="box-title">Especialidades e Convênios</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form">
+          <div class="box-body">
+            <div class="form-group">
+              <label for="especialidade">Especialidade</label>
+              <select
+                id="especialidade"
+                [(ngModel)]="especialidadeSelecionada"
+                (ngModelChange)="onChangeEspecialidade($event)"
+                name="especialidade"
+                class="form-control select2"
+              >
+                <option [value]="0" selected>Selecione</option>
+                <option
+                  [value]="especialidade.id"
+                  *ngFor="let especialidade of especialidades"
+                  >{{ especialidade.nome }}</option
+                >
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="convenio">Convênio</label>
+              <select id="convenio"
+              [(ngModel)]="convenioSelecionado"
+              (ngModelChange)="onChangeConvenio($event)"
+              name="convenio"
+              class="form-control select2"
+            >
+              <option *ngIf="especialidadeSelecionada == 0" value="0"
+                >Selecione</option
+              >
+              <option *ngFor="let convenio of convenios" [ngValue]="convenio">
+                {{ convenio.nome }}</option
+              >
+            </select>
+            </div>
+            <div class="icon" *ngIf="uriFotoConvenio !== undefined">
+                <img
+                  [src]="uriFotoConvenio"
+                  class="img-convenio img-fluid img-thumbnail"
+                  alt="carregando imagem... "
+                />
+              </div>
+          </div>
+          <!-- /.box-body -->
+
+        </form>
+      </div>
+
+      <!-- /.box -->
+
+
+
+<!-- PRESTADORES -->
+
+<div class="box box-success box-solid">
     <div class="box-header with-border">
       <h3 class="box-title">Prestadores</h3>
-      <div class="box-tools pull-right">
-      </div>
+      <div class="box-tools pull-right"></div>
     </div>
 
     <div class="box-body">
-         <section class="content">
-            <div class="form-group">
-              <div class="col-sm-6">
-              <label>Especialidade</label>
-              <select [(ngModel)]="especialidadeSelecionada" (ngModelChange)="onChangeEspecialidade($event)" name="especialidade" class="form-control select2">
-                <option [value]="0" selected>Selecione</option>
-                <option [value]="especialidade.id" *ngFor="let especialidade of especialidades">{{especialidade.nome}}</option>
-              </select>
+        <div
+          class="row"
+          *ngIf="prestadores !== undefined"
+          style="margin-left: 5px"
+        >
+          <div class="box-body">
+            <ul
+              class="products-list product-list-in-box prestadores"
+              *ngFor="let prestador of prestadores"
+            >
+              <div id="prestadorItem">
+              <a href="javascript:void(0)" class="product-title"
+                ><li class="item">
+                  <div class="product-img">
+                    <img
+                      class="direct-chat-img"
+                      [src]="prestador.uriFoto"
+                      [alt]="prestador.nome"
+                    />
+                  </div>
+                  <div class="product-info" style="color: #00a65a">
+                    <h4>{{ prestador.tratamento }} {{ prestador.nome }}</h4>
+
+                    <span
+                      class="product-description"
+                      style="margin-top: -10px;"
+                    >
+                      <b>{{ prestador.tipoEspecialidade }}</b>
+                    </span>
+                    <i class="fa fa-play icone-direita"></i>
+
+                  </div>
+                </li>
+              </a>
+              <hr />
             </div>
 
-            <div class="col-sm-4">
-              <label>Convênio</label>
-               <select [(ngModel)]="convenioSelecionado" (ngModelChange)="onChangeConvenio($event)" name="convenio" class="form-control select2">
-                <option *ngIf='especialidadeSelecionada == 0' value="0">Selecione</option>
-                <option *ngFor="let convenio of convenios" [ngValue]="convenio"> {{convenio.nome}}</option>
-              </select>
-            </div>
+            </ul>
+          </div>
 
-            <div class="col-sm-2" *ngIf="uriFotoConvenio !== undefined">
-               <img [src]="uriFotoConvenio" class="img-convenio img-fluid img-thumbnail" alt="carregando imagem... ">
-            </div>
+        </div>
 
-            </div>
-
-            <hr/>
-            <div class="row" *ngIf="prestadores !== undefined" style="margin-left: 16px">
-              <div class="box-body">
-                <ul
-                  class="products-list product-list-in-box"
-                  *ngFor="let prestador of prestadores"
-                >
-                  <a href="javascript:void(0)" class="product-title"
-                    ><li class="item">
-                      <div class="product-img">
-                        <img
-                          class="direct-chat-img"
-                          [src]="prestador.uriFoto"
-                          [alt]="prestador.nome"
-                        />
-                      </div>
-                      <div class="product-info" style="color: #00a65a">
-                       <h4> {{ prestador.tratamento }} {{ prestador.nome }}</h4>
-
-                        <span class="product-description" style="margin-top: -10px;">
-                          <b>{{ prestador.tipoEspecialidade }}</b>
-                        </span>
-                      </div>
-                    </li>
-                  </a>
-                  <hr />
-                </ul>
-              </div>
-
-              <!--
-                        <div class="col-lg-4 col-xs-12" *ngFor="let prestador of prestadores">
-
-                          <a [routerLink]="['/clinicas', prestador.id]">
-                                  <div class="small-box bg-cyan">
-                            <div class="inner">
-                              <h3>{{ prestador.tratamento }}</h3>
-                              <h4>{{ prestador.nome }}</h4>
-                            </div>
-                            <div class="icon">
-                              <img
-                                [src]="prestador.uriFoto"
-                                class="img-circle foto-medico"
-                                [alt]="prestador.nome"
-                              />
-                            </div>
-                            <a href="#" class="small-box-footer">
-                              Consultar Agenda <i class="fa fa-arrow-circle-right"></i>
-                            </a>
-                          </div>
-                          </a>
-                        </div> -->
-            </div>
-          </section>
-      </div>
     </div>
-    <!-- /.box-body -->
-  </section>
+  </div>
+
+    </div>
+  </div>
+
+<!--end prestadores-->
+  <!-- /.box-body -->
+</section>

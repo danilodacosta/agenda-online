@@ -1,9 +1,9 @@
+import { Convenio } from './../shared/convenio.model';
 import { ConvenioService } from './../convenio.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { PrestadorService } from '../prestador.service';
 import { Prestador } from '../shared/prestador.model';
 import { ActivatedRoute } from '@angular/router';
-import { Convenio } from '../shared/convenio.model';
 
 @Component({
   selector: 'app-prestadores',
@@ -58,7 +58,7 @@ export class PrestadoresComponent implements OnInit {
 
   public onChangeConvenio(convenioSelecionado: Convenio): void {
      this.uriFotoConvenio = convenioSelecionado.uriFoto;
-      this.consultarPrestadores();
+      this.consultarPrestadores(convenioSelecionado);
 
   }
 
@@ -70,8 +70,9 @@ export class PrestadoresComponent implements OnInit {
       );
   }
 
-  private consultarPrestadores(): void {
-     this.prestadorService.pesquisarPrestadoresPorEmpreendimento(this.route.snapshot.params['id'])
-     .subscribe((prestadores: any[]) => this.prestadores = prestadores);
+  private consultarPrestadores(convenioSelecionado: Convenio): void {
+    const empreendimentoId = this.route.snapshot.params['id'];
+    this.prestadorService.pesquisarPrestadoresPorEmpreendimento(empreendimentoId, convenioSelecionado.id)
+    .subscribe((prestadores: any[]) => this.prestadores = prestadores);
   }
 }

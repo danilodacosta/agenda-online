@@ -24,9 +24,9 @@ export class PrestadorService {
       .catch((e: any) => Observable.throw(this.errorHandler(e)));
     }
 
-    public pesquisarPrestadoresPorEmpreendimento(idEmpreendimento: number): Observable<any> {
+    public pesquisarPrestadoresPorEmpreendimento(idEmpreendimento: number , idConvenio: number): Observable<any> {
       return this.http
-      .get(`${URL_API}/GenericQuery/Executar?Query=${Query.consultarPrestadoresPorEmpreendimento(idEmpreendimento)}`)
+      .get(`${URL_API}/GenericQuery/Executar?Query=${Query.consultarPrestadoresPorEmpreendimentoEConvenio(idEmpreendimento, idConvenio)}`)
       .retry(10)
       .map(resposta => JSON.parse(resposta.json()).classe)._do(data => console.log(data))
       .catch((e: any) => Observable.throw(this.errorHandler(e)));
