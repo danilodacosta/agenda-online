@@ -94,7 +94,7 @@
               *ngFor="let prestador of prestadores"
             >
               <div id="prestadorItem">
-              <a href="javascript:void(0)" class="product-title"
+              <a (click)="selecionarPrestador(prestador)" class="product-title"
                 ><li class="item">
                   <div class="product-img">
                     <img
@@ -129,6 +129,21 @@
   </div>
 
     </div>
+
+
+
+
+    <div class="col-md-8">
+        <div class="box box-success box-solid">
+          <div class="box-header with-border">
+            <h3 class="box-title">Horários Disponíveis</h3>
+            <div class="box-tools pull-right"></div>
+          </div>
+          <div class="box-body">
+            {{jsonConsulta | json}}
+          </div>
+      </div>
+      </div>
   </div>
 
 <!--end prestadores-->

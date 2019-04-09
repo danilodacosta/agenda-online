@@ -4,29 +4,31 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PrestadorService } from '../prestador.service';
 import { Prestador } from '../shared/prestador.model';
 import { ActivatedRoute } from '@angular/router';
+import { DateFormatPipe } from '../shared/DateFormatPipe.pipe';
 
 @Component({
   selector: 'app-prestadores',
   templateUrl: './prestadores.component.html',
   styleUrls: ['./prestadores.component.css'],
-  providers: [PrestadorService, ConvenioService]
+  providers: [PrestadorService, ConvenioService, DateFormatPipe]
 })
 export class PrestadoresComponent implements OnInit {
   public prestadores: Array<any>;
   public convenios: Array<Convenio>;
   public especialidades: Array<any>;
-
   public especialidadeSelecionada: any;
   public convenioSelecionado: Convenio;
-
   public uriFotoConvenio: string;
 
+  public horariosDisponiveis: any[];
+  public jsonConsulta: any = new Object;
   @Input() public idEmpreendimento: number;
 
   constructor(
     private prestadorService: PrestadorService,
     private convenioService: ConvenioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dateFomartPipe: DateFormatPipe
   ) {}
 
   ngOnInit() {
@@ -59,7 +61,6 @@ export class PrestadoresComponent implements OnInit {
   public onChangeConvenio(convenioSelecionado: Convenio): void {
      this.uriFotoConvenio = convenioSelecionado.uriFoto;
       this.consultarPrestadores(convenioSelecionado);
-
   }
 
   private consultarConvenios(): void {
@@ -74,5 +75,25 @@ export class PrestadoresComponent implements OnInit {
     const empreendimentoId = this.route.snapshot.params['id'];
     this.prestadorService.pesquisarPrestadoresPorEmpreendimento(empreendimentoId, convenioSelecionado.id)
     .subscribe((prestadores: any[]) => this.prestadores = prestadores);
+  }
+
+  public selecionarPrestador(prestadorSelecionado: any) {
+
+    this.jsonConsulta.Prestador = prestadorSelecionado.id.toString();
+    this.jsonConsulta.Empreendimento = this.route.snapshot.params['id'];
+    this.jsonConsulta.DataInicial = this.dateFomartPipe.transform(new Date());
+    this.jsonConsulta.DataFinal = this.dateFomartPipe.transform(this.calcularProximosDias());
+    this.jsonConsulta.TipoAgenda = '0';
+    this.jsonConsulta.QuantReg = '0';
+    this.jsonConsulta.Hora = '';
+    this.jsonConsulta.HoraPeriodo = '';
+  }
+
+  private calcularProximosDias(): Date {
+    const data = new Date();
+    const novaData = new Date();
+    novaData.setDate(data.getDate() + 30);
+    return novaData;
+
   }
 }
