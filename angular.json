@@ -30,12 +30,14 @@
               "./node_modules/select2/dist/css/select2.min.css",
               "./node_modules/jvectormap/jquery-jvectormap.css",
               "./node_modules/admin-lte/dist/css/AdminLTE.min.css",
-              "./node_modules/admin-lte/dist/css/skins/_all-skins.min.css"
+              "./node_modules/admin-lte/dist/css/skins/_all-skins.min.css",
+              "src/jquery-ui.min.css"
+
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/jquery-ui/ui/widgets/datepicker.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "./node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
               "./node_modules/admin-lte/dist/js/adminlte.min.js",
               "./node_modules/fastclick/lib/fastclick.js",
               "./node_modules/jquery-slimscroll/jquery.slimscroll.js"
