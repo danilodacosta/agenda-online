@@ -1,3 +1,4 @@
+import { HorariosDisponiveisComponent } from './prestadores/horarios-disponiveis/horarios-disponiveis.component';
 import { EmpreendimentosComponent } from './empreendimentos/empreendimentos.component';
 import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
@@ -8,5 +9,6 @@ export const ROUTES: Routes = [
     { path: '' , component: HomeComponent },
     { path: 'empreendimentos' , component: EmpreendimentosComponent },
     {path: 'empreendimentos/:id', component: PrestadoresComponent},
-    {path: 'agendamento', component: AgendamentoComponent}
+    {path: 'agendamento', component: AgendamentoComponent},
+    {path: 'horarios', component: HorariosDisponiveisComponent},
 ];
