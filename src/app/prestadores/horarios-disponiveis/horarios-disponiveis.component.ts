@@ -17,17 +17,22 @@ export class HorariosDisponiveisComponent implements OnInit {
   public horariosDisponiveis: Array<any>;
   public horarios: Array<Horarios>;
   ngOnInit() {
-    this.montaCalendario();
+   // this.montaCalendario();
     this.horariosDisponiveisService.consultarHorarios().subscribe((horarios: any) => {
       this.horariosDisponiveis = horarios;
 
-      Array.for(this.horariosDisponiveis => {
+      horarios = new Array<Horarios>();
+      horario: new Horarios;
 
-      });
+      this.horariosDisponiveis.forEach(element => {
+          console.log(element.Data);
+          console.log(element.HoraInicio);
 
-
-    });
-    // console.log(this.horariosDisponiveis);
+          horarios.data = element.Data;
+          horarios.horarios.push(element.HoraInicio);
+     });
+   });
+//console.log(this.horariosDisponiveis);
   }
 
   private montaCalendario(): void {
