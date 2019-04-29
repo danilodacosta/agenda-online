@@ -29,13 +29,13 @@ export class HorariosDisponiveisService {
     this.jsonConsulta.Hora = '';
     this.jsonConsulta.HoraPeriodo = '';
 
-    console.log(`${URL_API}/HorarioDisponivel/Consultar?Json=${JSON.stringify(this.jsonConsulta)}`);
+    // console.log(`${URL_API}/HorarioDisponivel/Consultar?Json=${JSON.stringify(this.jsonConsulta)}`);
 
 
     return this.http
     .get(`${URL_API}/HorarioDisponivel/Consultar?Json=${JSON.stringify(this.jsonConsulta)}`)
     .retry(10)
-    .map(resposta => (resposta.json().Classe.HorariosDisponiveis))._do(data => (console.log()))
+    .map(resposta => (resposta.json().Classe.HorariosDisponiveis))
     .catch((e: any) => Observable.throw(this.errorHandler(e)));
   }
 

@@ -17,22 +17,53 @@ export class HorariosDisponiveisComponent implements OnInit {
   public horariosDisponiveis: Array<any>;
   public horarios: Array<Horarios>;
   ngOnInit() {
-   // this.montaCalendario();
+    // this.montaCalendario();
     this.horariosDisponiveisService.consultarHorarios().subscribe((horarios: any) => {
       this.horariosDisponiveis = horarios;
-
-      horarios = new Array<Horarios>();
-      horario: new Horarios;
+      const datasDisponiveis: Array<Horarios> = [];
+      let novaData: Horarios;
 
       this.horariosDisponiveis.forEach(element => {
-          console.log(element.Data);
-          console.log(element.HoraInicio);
 
-          horarios.data = element.Data;
-          horarios.horarios.push(element.HoraInicio);
-     });
-   });
-//console.log(this.horariosDisponiveis);
+        //console.log('proxima data' + element.Data);
+
+        //console.log(element.HoraInicio);
+
+        // element.Data;
+        // element.HoraInicio;
+
+        novaData = new Horarios;
+
+        if (datasDisponiveis.length === 0) {
+          novaData.data = element.Data;
+          novaData.horarios = [];
+          novaData.horarios.push(element.HoraInicio);
+          datasDisponiveis.push(novaData);
+          console.log('add data inicial  ' + datasDisponiveis.length);
+
+        } else {
+            console.log('reiniciei for  ' + datasDisponiveis.length);
+            datasDisponiveis.forEach(data => {
+            console.log('For - ' + data.data);
+            console.log('Element => - ' + element.Data);
+            if (data.data === element.Data) {
+                console.log('mesma data incluir só horario - ' + element.Data);
+                data.horarios.push(element.HoraInicio);
+            } else {
+              console.log('data diferente incluir data e horario - ' + element.Data);
+              novaData = new Horarios;
+              novaData.data = element.Data;
+              novaData.horarios = [];
+              novaData.horarios.push(element.HoraInicio);
+
+            }
+          });
+          datasDisponiveis.push(novaData);
+        }
+      });
+    });
+
+
   }
 
   private montaCalendario(): void {
@@ -43,7 +74,7 @@ export class HorariosDisponiveisComponent implements OnInit {
       prevText: '< Anterior',
       nextText: 'Próximo >',
       currentText: 'Hoje',
-monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
       monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
       dayNames: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
       dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
