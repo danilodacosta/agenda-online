@@ -58,7 +58,7 @@ export class HorariosDisponiveisComponent implements OnInit {
 
             }
           });
-          datasDisponiveis.push(novaData);
+         // datasDisponiveis.push(novaData);
         }
       });
     });
