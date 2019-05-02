@@ -16,6 +16,7 @@ export class EmpreendimentoService {
   constructor(private http: Http) {}
 
   public pesquisarEmpreendimentos(): Observable<Empreendimento[]> {
+    console.log(`${URL_API}/Empreendimentos/Consultar`);
     return this.http
     .get(`${URL_API}/Empreendimentos/Consultar`)
       .retry(10)
