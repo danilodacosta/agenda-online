@@ -1,8 +1,7 @@
 import { Horarios } from './../../shared/horarios.model';
 import { HorariosDisponiveisService } from './../../horariosDiponiveis.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 declare var $: any;
-
 
 @Component({
   selector: 'app-horarios-disponiveis',
@@ -12,62 +11,51 @@ declare var $: any;
 })
 export class HorariosDisponiveisComponent implements OnInit {
 
+  public horariosDisponiveis: Array<any>;
+  public datasDisponiveis: Array<Horarios> = [];
+
+  @Input() public jsonConsulta: any = new Object;
+
   constructor(private horariosDisponiveisService: HorariosDisponiveisService) { }
 
-  public horariosDisponiveis: Array<any>;
-  public horarios: Array<Horarios>;
   ngOnInit() {
+    console.log(this.jsonConsulta);
     // this.montaCalendario();
     this.horariosDisponiveisService.consultarHorarios().subscribe((horarios: any) => {
       this.horariosDisponiveis = horarios;
-      const datasDisponiveis: Array<Horarios> = [];
-      let novaData: Horarios;
+      this.montaDatasDisponiveis();
+      this.montaCalendario();
+    });
+  }
 
-      this.horariosDisponiveis.forEach(element => {
 
-        //console.log('proxima data' + element.Data);
+  private montaDatasDisponiveis(): void {
 
-        //console.log(element.HoraInicio);
-
-        // element.Data;
-        // element.HoraInicio;
-
+    let novaData: Horarios;
+    this.horariosDisponiveis.forEach(element => {
+      const dataExistente = this.datasDisponiveis.find((data) => data.data === element.Data);
+      if (dataExistente) {
+        dataExistente.horarios.push(element.HoraInicio);
+      } else {
         novaData = new Horarios;
-
-        if (datasDisponiveis.length === 0) {
-          novaData.data = element.Data;
-          novaData.horarios = [];
-          novaData.horarios.push(element.HoraInicio);
-          datasDisponiveis.push(novaData);
-          console.log('add data inicial  ' + datasDisponiveis.length);
-
-        } else {
-            console.log('reiniciei for  ' + datasDisponiveis.length);
-            datasDisponiveis.forEach(data => {
-            console.log('For - ' + data.data);
-            console.log('Element => - ' + element.Data);
-            if (data.data === element.Data) {
-                console.log('mesma data incluir só horario - ' + element.Data);
-                data.horarios.push(element.HoraInicio);
-            } else {
-              console.log('data diferente incluir data e horario - ' + element.Data);
-              novaData = new Horarios;
-              novaData.data = element.Data;
-              novaData.horarios = [];
-              novaData.horarios.push(element.HoraInicio);
-
-            }
-          });
-         // datasDisponiveis.push(novaData);
-        }
-      });
+        novaData.data = element.Data;
+        novaData.horarios = [];
+        novaData.horarios.push(element.HoraInicio);
+        this.datasDisponiveis.push(novaData);
+      }
     });
 
+    console.log(this.datasDisponiveis);
 
   }
 
   private montaCalendario(): void {
-    const datasDisponiveis = ['11-04-2019', '12-04-2019', '15-04-2019', '15-05-2019', '13-04-2019'];
+
+    const datas: string[] = [];
+
+    this.datasDisponiveis.forEach(data => {
+      datas.push(data.data);
+    });
 
     $('#datepicker').datepicker({
       closeText: 'Fechar',
@@ -80,21 +68,31 @@ export class HorariosDisponiveisComponent implements OnInit {
       dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
       dayNamesMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
       dateFormat: 'dd-mm-yy',
-      minDate: new Date(),
-      maxDate: '15-05-2019',
+      minDate: datas[0],
+      maxDate: datas[datas.length - 1],
       beforeShowDay: function (d) {
         const year = d.getFullYear(), month = ('0' + (d.getMonth() + 1)).slice(-2), day = ('0' + (d.getDate())).slice(-2);
         const formatted = day + '-' + month + '-' + year;
 
-        if ($.inArray(formatted, datasDisponiveis) !== -1) {
+        if ($.inArray(formatted, datas) !== -1) {
           return [true, '', 'Disponivel'];
         } else {
           return [false, '', 'unAvailable'];
         }
       },
       onSelect: function (date, inst) {
-        alert('Data selecionada:' + date);
+
+        this.pesquisaHoraios(date);
+
       }
     });
   }
+
+  private pesquisaHoraios(dataSeleciona: string): void {
+    console.log('data selecionada : ' + dataSeleciona);
+    //;;const dataExistente = this.datasDisponiveis.find((data) => data.data === date);
+
+    //console.log(dataExistente);
+  }
+
 }

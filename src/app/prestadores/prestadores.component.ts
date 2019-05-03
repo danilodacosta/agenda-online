@@ -79,6 +79,10 @@ export class PrestadoresComponent implements OnInit {
 
   public selecionarPrestador(prestadorSelecionado: any) {
 
+    this.jsonConsulta = new Object;
+
+    console.log(this.jsonConsulta);
+
     this.jsonConsulta.Prestador = prestadorSelecionado.id.toString();
     this.jsonConsulta.Empreendimento = this.route.snapshot.params['id'];
     this.jsonConsulta.DataInicial = this.dateFomartPipe.transform(new Date());
@@ -87,6 +91,8 @@ export class PrestadoresComponent implements OnInit {
     this.jsonConsulta.QuantReg = '0';
     this.jsonConsulta.Hora = '';
     this.jsonConsulta.HoraPeriodo = '';
+
+    console.log(this.jsonConsulta);
   }
 
   private calcularProximosDias(): Date {
@@ -94,6 +100,6 @@ export class PrestadoresComponent implements OnInit {
     const novaData = new Date();
     novaData.setDate(data.getDate() + 30);
     return novaData;
-
   }
+
 }
